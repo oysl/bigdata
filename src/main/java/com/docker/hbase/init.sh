@@ -26,13 +26,14 @@ if [[ $1 == "-d" ]]; then
   while true; do sleep 1000; done
 fi
 
-
-
+#加载 jdk8,这个本来想写Dockfile里面,但是一直报错...
+#yum -y remove jdk-1.7.0_71-fcs.x86_64
+yum -y install java-1.8.0-openjdk*
 
 echo '启动hbase'
 sh /usr/local/hbase-1.2.11/bin/start-hbase.sh
-
 echo 'export PATH=$HADOOP_PREFIX/bin:$PATH' >> /etc/profile
+echo 'export JAVA_HOME=/usr' >> /etc/profile
 
 echo 'export PATH=/usr/local/hbase-1.2.11/bin:$PATH' >> /etc/profile
 

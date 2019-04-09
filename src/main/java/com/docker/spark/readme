@@ -1,0 +1,11 @@
+hbase 的docker镜像生成文件,
+init 是镜像启动执行的脚本
+
+create.sh 是生成docker镜像的命令
+
+start 是启动docker这个容器的命令
+
+需下载
+链接：https://pan.baidu.com/s/1aMTvQ02R19NWoKVwqoWukw 
+提取码：22tt 
+这个文件放到这个文件夹使用

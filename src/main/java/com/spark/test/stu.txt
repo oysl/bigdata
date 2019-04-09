@@ -1,0 +1,7 @@
+1  解压spark后,进入bin目录
+2.有个 spark-shell 输入启动,可为本地模式
+3. sc 可以.+tab键出方法 如 sc.fileText("文件路径")
+
+4. Resilient Distributed Dataset 弹性分布式数据集,spark核心抽象,只读的对象集合	
+
+5. spark RDD 加载数据或执行变换并不会触发数据的处理,只是生产执行计划,知道action动作执行时,才进行数据处理
