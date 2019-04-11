@@ -67,7 +67,7 @@ public class HbaseApp {
 		put.addColumn(Bytes.toBytes("data"), Bytes.toBytes("2"), Bytes.toBytes("测试值3"));
 
 		table.put(put);
-
+		
 		table.close();
 	}
 
@@ -98,5 +98,7 @@ public class HbaseApp {
 			System.out.println(result.value());
 		}
 		table.close();
+		
 	}
+
 }

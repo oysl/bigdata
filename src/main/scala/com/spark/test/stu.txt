@@ -1,0 +1,56 @@
+1  解压spark后,进入bin目录
+2.有个 spark-shell 输入启动,可为本地模式
+3. sc 可以.+tab键出方法 如 sc.fileText("文件路径")
+
+4. Resilient Distributed Dataset 弹性分布式数据集,spark核心抽象,只读的对象集合	
+
+5. spark RDD 加载数据或执行变换并不会触发数据的处理,只是生产执行计划,知道action动作执行时,才进行数据处理
+
+6 http://192.168.10.241:4040/jobs/ spark的jobs web管理系统 (需要启动 spark-shell)
+
+
+
+-------------------------------------------------------------------------------------------------------------
+1.local:本地模式,也就是上面说的.
+2.独立集群模式(standalone  cluster mode): 
+	a.配置 spark 安装目录下的 conf/slaves 文件 (配置这个可以用./start-slaves.sh 远程登录启动所有配置好的 slave)
+		地址1
+		地址2
+		地址....
+	b.同步这个配置到各个集群的机器上
+	c.启动master节点上的start-master.sh
+	d.启动各个节点的slave启动 start-slaves.sh [启动命令 ./start-slave.sh spark:// master机器的ip:端口(默认7077)]
+		如果连接成功,在 master机器上 输入netstat -na |grep 7077 可以看到连接的信息
+		
+	e.start-all.sh 会一并启动本地的master和(a)步骤配置好的slave
+	f. 127.0.0.1:8080 可以打开master的管理web界面
+	g. spark-shell --master spark://192.168.10.241:7077(集群的master地址端口)  [可以用这个命令,连接集群] 
+			这里可以 设置MASTER变量后,就可以直接 spark-shell 会连接到设定好的地址
+				export MASTER=spark://192.168.10.241:7077
+			在http://192.168.10.241:8080/ webui上看到相关的master runing信息
+			在http://192.168.10.241:8081/ webui上看到相关的对应的slave runing信息
+	h.spark 集群默认调度job的机制,先进先处理的队列
+	
+2.1 端口配置
+	spark端口等参数文件在spark安装目录下的conf/spark-env.sh文件中,在初始的安装目录中,会有spark-env.sh.template文件,可以复制出来成spark-env.sh配置
+	独立集群模式下的常用的配置
+	SPARK_MASTER_PORT=7077	
+	SPARK_MASTER_WEBUI_PORT=8080
+2.2 sc.fileText 集群模式下
+	在集群模式下,执行这个命令如果用的是本地文件系统,那么,每个节点,都会去加载本地的对应目录的文件,
+	如果采用hdfs文件系统的话,就不会出现这个问题
+
+------------------------------------------------------------------------------------------------------------------------
+
+1.推荐使用maven编译
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-core_2.11</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+2.eclipse 可以装scala 插件 
+	help ==> 搜索,install即可
+3.scala 
+ scalac来编译
+ .scala==>编译成.class文件
+	
