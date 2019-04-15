@@ -50,7 +50,12 @@
 		</dependency>
 2.eclipse 可以装scala 插件 
 	help ==> 搜索,install即可
-3.scala 
+	注意:这里有个坑,eclipse的版本和scala的插件不匹配,在代码提示的时候,会不停的提示错误,这里就需要匹配的上的版本
+	查看和下载  各个匹配版本 http://scala-ide.org/download/prev-stable.html
+	相关帖子:https://blog.csdn.net/lzw2016/article/details/86717728
+	我在测试的时候用的eclipse版本是4.6.0 scala插件版本是 这个目录下的base,将这个文件夹复制的eclipse的安装目录下的dropins目录下,然后重启.
+	
+3.scala
  scalac来编译
  .scala==>编译成.class文件
 	
